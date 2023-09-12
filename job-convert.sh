@@ -15,6 +15,7 @@
 year=1909
 dir=/scratch/project_2002776/data/PTK-1900s/PTK_$year  # <- change decade!
 
+module load imagemagick/7.1.0-49
 
 mogrify -format png   /scratch/project_2004614/senka-slo/data-images/1919/1919_3_22_PrivremenoNarodnoPredstavništvo_5/*tif
 # imgDir=$dir/images
