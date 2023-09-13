@@ -6,7 +6,7 @@
 #SBATCH -p small
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=4
-#SBATCH -t 1-00:00:00
+#SBATCH -t 3-00:00:00
 #SBATCH --mail-type=END
 #SBATCH --mail-user=senka.drobac@gmail.com
 
@@ -17,7 +17,7 @@ dir=/scratch/project_2002776/data/PTK-1900s/PTK_$year  # <- change decade!
 
 module load imagemagick/7.1.0-49
 
-mogrify -format png   /scratch/project_2004614/senka-slo/data-images/1919/1919_3_22_PrivremenoNarodnoPredstavništvo_5/*tif
+mogrify -format png   /scratch/project_2004614/senka-slo/data-images/????/*/*tif
 # imgDir=$dir/images
 
 # echo $year

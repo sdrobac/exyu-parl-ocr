@@ -78,5 +78,10 @@ run:
 /projappl/project_2004614/local/bin/tesseract /scratch/project_2004614/senka-slo/data/1931_12_7_narodnaskupština_prethodni1/1748,1749,1750,604,605,606_1931,1932_knjiga_I,knjiga_II,knjiga_III_0013.png tess-sr-1931_12_7_narodnaskupština_prethodni1-13 -l srp hocr
 
 
+/projappl/project_2004614/local/bin/tesseract /scratch/project_2004614/senka-slo/data/1935_1_3_narodnaskupština_4/1765,621_1934,1935_knjiga_I_0113.png 1935_1_3_narodnaskupština_4_0113.txt -l srp
 
 
+/projappl/project_2004614/local/bin/tesseract 1935_knjiga_I_0113.tif 1935_knjiga_I_0113-tif-sr -l srp
+/projappl/project_2004614/local/bin/tesseract 1935_knjiga_I_0113.png 1935_knjiga_I_0113-png-sr -l srp
+
+/projappl/project_2004614/local/bin/tesseract 1935_knjiga_I_0113.tif 1935_knjiga_I_0113-tif-sr-lat -l srp+lat
