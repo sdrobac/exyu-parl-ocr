@@ -48,22 +48,39 @@ def getBlocksForChange(firstLine, endLine, tessLines):
     newBlock = ''.join(newBlockList)
     originalBlock = ''.join(originalBlockList)
     return originalBlock, newBlock
+    
+def getBlocksForLighterChange(firstLine, endLine, tessLines):
+    newBlockList = []
+    originalBlockList = []
+    for j in range(firstLine, endLine):
+        if j < len(tessLines):
+            if has_running_text(tessLines[j]) or  contains_only_spaces_or_newline(tessLines[j]):
+                newBlockList.append(tessLines[j])
+            originalBlockList.append(tessLines[j])
+    newBlockList = remove_extra_consecutive_newlines(newBlockList)
+    newBlock = ''.join(newBlockList)
+    originalBlock = ''.join(originalBlockList)
+    return originalBlock, newBlock
 
 
 def main(args):
     
     DIR1 = '/scratch/project_2004614/senka-slo/data/tesseract-cyrilic-corrected/'
-    DIR2 = '/scratch/project_2004614/senka-slo/data/tesseract-cyrilic-noncorrected/'
-    OUTPUTDIR = '/scratch/project_2004614/senka-slo/data/tesseract-intermidiate/'
+    DIR2 = '/scratch/project_2004614/senka-slo/data/tesseract-cyrilic-corrected2/'
+    DIR3 = '/scratch/project_2004614/senka-slo/data/tesseract-cyrilic-corrected3/'
+    DIR4 = '/scratch/project_2004614/senka-slo/data/tesseract-cyrilic-noncorrected/'
+    # OUTPUTDIR = '/scratch/project_2004614/senka-slo/data/tesseract-intermidiate/'
+    OUTPUTDIR = '/scratch/project_2004614/senka-slo/data/tesseract-intermidiate-new/'
     # fileName = '19190322-PrivremenoNarodnoPredstavnistvo-05.tesseract'
     # fileName = '19210728-ZakonodajniOdbor-03.tesseract'
     # fileName = '19211104-ZakonodajniOdbor-05.tesseract'
-    for DIR in [DIR1, DIR2]:
+    for DIR in [DIR4, DIR3, DIR1, DIR2]:
         for root, dirs, files in os.walk(DIR):
             for file in files:  
                 if file.endswith(".tesseract"):
                 # print(file)
                 # if (file == "19370722-Senat-25.tesseract"):
+                # if (file == '19210922-ZakonodajniOdbor-10.tesseract'):
 
                     
                     fullFileName = os.path.join(root, file)
@@ -82,7 +99,8 @@ def main(args):
                     for i, line in enumerate(tessLines, start=0):
                         # print(line)
                         # Check first 6 lines
-                        originalBlock, newBlock = getBlocksForChange(0, 6, tessLines)
+                        # originalBlock, newBlock = getBlocksForChange(0, 6, tessLines)
+                        originalBlock, newBlock = getBlocksForLighterChange(0, 6, tessLines)
                         
                         tessText  = tessText.replace(originalBlock, newBlock)
 
